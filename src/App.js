@@ -10,9 +10,9 @@ const App = () => {
           Name: <br />
           <input type="text" /> <br />
           Name:<br />
-          <input type="text" /> <br />
-          Name:<br />
-          <input type="text" />
+          <input type="text" /> <br /> <br />
+
+          <input type="Submit" />
         </form>
       </div>
       <div className="block">
