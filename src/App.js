@@ -38,9 +38,13 @@ const App = () => {
         return task.id !== id? task: '';
     }) );
   }
-  const onSearchTask = () => {
+  const onSearchTask = (searchString) => {
+    searchString = 'D';
+    let n = searchString.length;
+    console.log(n);
+    n === 0? setTasks(tasks):
     setTasks(tasks.filter( (task) => {
-      return task.chore[0] === 'G'? task: '';
+      return ((task.chore).substring(0, n) === searchString)? task: '';
     } ))
   }
   return (
