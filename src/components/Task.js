@@ -1,9 +1,12 @@
+import { FaTimes } from 'react-icons/fa';
 
 const Task = ({ task }) => {
     return (
         <div className="Task">
           <h3>{task.chore}</h3>
           <p>{task.time}</p>
+
+          <FaTimes />
         </div>
     )
 }
