@@ -32,20 +32,48 @@ const App = () => {
       completed: false
     },
   ]);
+
+  const [tasks2, setTasks2] = useState([    
+    {
+      id: 1,
+      chore: "Doing dishes",
+      time: "9AM Sunday",
+      completed: false
+    },
+    {
+      id: 2,
+      chore: "Giving my mercedes for servicing",
+      time: "11AM Sunday",
+      completed: true
+    },
+    {
+      id: 3,
+      chore: "Garden work",
+      time: "4PM Sunday",
+      completed: false
+    },
+    {
+      id: 4,
+      chore: "Watering plants",
+      time: "5PM Sunday",
+      completed: false
+    },
+  ]);
+
   const onDeleteTask = (id) => {
     // console.log(id);
     setTasks(tasks.filter( (task) => {
         return task.id !== id? task: '';
     }) );
+    setTasks2(tasks2.filter( (task) => {
+      return task.id !== id? task: '';
+  }) );
   }
   const onSearchTask = (searchString) => {
-    // searchString = 'D';
-    // console.log(searchString);
     let n = searchString.length;
-    // console.log(n);
     searchString.toLowerCase();
-    n === 0? setTasks(tasks):
-    setTasks(tasks.filter( (task) => {
+    n === 0? setTasks(tasks2):
+    setTasks(tasks2.filter( (task) => { console.log(tasks2)
       return (((task.chore).toLowerCase()).substring(0, n) === searchString)? task: '';
     } ))
   }
