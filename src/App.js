@@ -31,11 +31,17 @@ const App = () => {
       completed: false
     },
   ]);
+  const onDeleteTask = (id) => {
+    // console.log(id);
+    setTasks(tasks.filter( (task) => {
+        return task.id !== id? task: '';
+    }) );
+  }
   return (
     <div className="App">
       <Header />
       {/* Blueprint bish */}
-      <Tasks tasks={tasks} />
+      {tasks.length === 0? <h2>No tasks found!</h2>: <Tasks tasks={tasks} onDelete={onDeleteTask} />}
     </div>
   );
 }
