@@ -11,6 +11,7 @@
 .App {
   margin: auto;
   margin-top: 40px;
+  margin-bottom: 30px;
   width: 40%;
   border: 4px solid black;
   padding: 30px;
@@ -23,27 +24,24 @@
 }
 
 .header{
-  background-color: black;
   margin-bottom: 15px;
-  padding: 10px;
-  /* border-radius: 8px; */
+
   display: flex;
   justify-content: space-between;
 }
 
-.heading{
-  color: white;
-}
-
 /* Button styling */
 
-.btn{
+.add-btn{
   align-self: center;
   padding: 8px;
   background-color: rgb(36, 185, 36);
   border: 1px solid rgb(36, 185, 36);
   color: rgb(255, 255, 255);
   font-weight: 600;
+}
+.Tasks div{
+  margin-bottom: 20px;
 }
 
 .Task{
@@ -53,20 +51,48 @@
   display: flex;
   justify-content: space-between;
 }
+.done{
+  border-left: 3.5px solid rgb(36, 185, 36);
+}
+
 .delete{
   align-self: center;
 }
 
 input{
   width: 100%;
+  border: 1.6px solid black;
+  height: 32px;
+  border-radius: 3px;
 }
-
-.SearchTask{
+label{
+  font-weight: 600;
+}
+.SearchBar{
+  margin-top: 20px;
   margin-bottom: 20px;
-  border: 2px solid rgb(117, 117, 117);
-  height: 30px;
+}
+.SearchBar > label{
+  font-size: large;
+}
+.search-field{
+  border: 2px solid #757575;
+  height: 40px;
+  border: 2.6px solid black;
+}
+/* Add Task */
+
+.AddTask{
+  margin-bottom: 20px;
 }
 
+.add-task-btn{
+  background-color: black;
+  color: white;
+  font-weight: 600;
+}
+
+/* Responsiveness */
 @media only screen and (max-width: 900px) {
   .App{
     width: 400px;

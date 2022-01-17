@@ -2,6 +2,7 @@ import './App.css';
 import Header from './components/Header';
 import Tasks from './components/Tasks';
 import SearchBar from './components/SearchBar';
+import AddTask from './components/AddTask';
 import { useState } from 'react';
 
 const App = () => {
@@ -71,24 +72,36 @@ const App = () => {
   }
   const onSearchTask = (searchString) => {
     let n = searchString.length;
-    searchString.toLowerCase();
-    n === 0? setTasks(permTasks):
+    searchString = searchString.toLowerCase();
+
+    (n === 0)? setTasks(permTasks):
     setTasks(permTasks.filter( (task) => {
       return (((task.chore).toLowerCase()).substring(0, n) === searchString)? task: '';
     } ))
   }
+  const toggleTaskCompletion = (id) => {
+    setTasks(
+      tasks.map( (task) => task.id === id?
+        { ...task, completed: !task.completed }: task 
+      )
+    )
+    console.log(tasks);
+    setPermTasks(permTasks.map( (task) => task.id === id?
+    { ...task, completed: !task.completed }: task ))
+  }
   return (
     <div className="App">
       <Header />
+      <AddTask />
       {/* Blueprint bish */}
       <SearchBar onSearch={onSearchTask} />
-      {tasks.length === 0? <h2>No tasks found!</h2>: <Tasks tasks={tasks} onDelete={onDeleteTask}  />}
+      {tasks.length === 0? <h2>No tasks found!</h2>: <Tasks tasks={tasks} onDelete={onDeleteTask} onToggle={toggleTaskCompletion} />}
     </div>
   );
 }
 
 export default App;
 /*
-1. Sort tasks
-2. Search tasks
+ 1. Sort tasks
+~2. Search ~
 */

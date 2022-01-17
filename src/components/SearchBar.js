@@ -5,7 +5,10 @@ const SearchBar = ({ onSearch }) => {
     onSearch(searchString);
   }
   return(
-    <input type="text" placeholder="Search Task" className="SearchTask" onChange={onChange} />
+    <div className="SearchBar">
+      <label >Search</label>
+      <input type="text" placeholder="Search Task" className="search-field" onChange={onChange} />
+    </div>
   );
 }
 
