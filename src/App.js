@@ -63,22 +63,37 @@ const App = () => {
 
   const onDeleteTask = (id) => {
     // console.log(id);
-    setTasks(tasks.filter( (task) => {
-        return task.id !== id? task: '';
-    }) );
-    setPermTasks(permTasks.filter( (task) => {
-      return task.id !== id? task: '';
-  }) );
+    setTasks(
+      tasks.filter( 
+        (task) => {
+          return task.id !== id? task: '';
+        }
+      ) 
+    );
+    setPermTasks(
+      permTasks.filter( 
+        (task) => {
+          return task.id !== id? task: '';
+        }
+      ) 
+    );
   }
+
   const onSearchTask = (searchString) => {
+
     let n = searchString.length;
     searchString = searchString.toLowerCase();
 
     (n === 0)? setTasks(permTasks):
-    setTasks(permTasks.filter( (task) => {
-      return (((task.chore).toLowerCase()).substring(0, n) === searchString)? task: '';
-    } ))
+    setTasks(
+      permTasks.filter( 
+        (task) => {
+          return (((task.chore).toLowerCase()).substring(0, n) === searchString)? task: '';
+        } 
+      )
+    )
   }
+
   const toggleTaskCompletion = (id) => {
     setTasks(
       tasks.map( (task) => task.id === id?
@@ -89,13 +104,14 @@ const App = () => {
     setPermTasks(permTasks.map( (task) => task.id === id?
     { ...task, completed: !task.completed }: task ))
   }
+
   return (
     <div className="App">
       <Header />
       <AddTask />
-      {/* Blueprint bish */}
       <SearchBar onSearch={onSearchTask} />
-      {tasks.length === 0? <h2>No tasks found!</h2>: <Tasks tasks={tasks} onDelete={onDeleteTask} onToggle={toggleTaskCompletion} />}
+      {tasks.length === 0? <h2>No tasks found!</h2>: 
+        <Tasks tasks={tasks} onDelete={onDeleteTask} onToggle={toggleTaskCompletion} />}
     </div>
   );
 }
