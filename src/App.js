@@ -39,12 +39,14 @@ const App = () => {
     }) );
   }
   const onSearchTask = (searchString) => {
-    searchString = 'D';
+    // searchString = 'D';
+    // console.log(searchString);
     let n = searchString.length;
-    console.log(n);
+    // console.log(n);
+    searchString.toLowerCase();
     n === 0? setTasks(tasks):
     setTasks(tasks.filter( (task) => {
-      return ((task.chore).substring(0, n) === searchString)? task: '';
+      return (((task.chore).toLowerCase()).substring(0, n) === searchString)? task: '';
     } ))
   }
   return (
