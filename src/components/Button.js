@@ -6,4 +6,4 @@ const Button = ({ onToggle, showForm }) => {
     );
 }
 
-export default Button
+export default Button;
