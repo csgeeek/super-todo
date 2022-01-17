@@ -33,7 +33,7 @@ const App = () => {
     },
   ]);
 
-  const [tasks2, setTasks2] = useState([    
+  const [permTasks, setPermTasks] = useState([    
     {
       id: 1,
       chore: "Doing dishes",
@@ -65,15 +65,15 @@ const App = () => {
     setTasks(tasks.filter( (task) => {
         return task.id !== id? task: '';
     }) );
-    setTasks2(tasks2.filter( (task) => {
+    setPermTasks(permTasks.filter( (task) => {
       return task.id !== id? task: '';
   }) );
   }
   const onSearchTask = (searchString) => {
     let n = searchString.length;
     searchString.toLowerCase();
-    n === 0? setTasks(tasks2):
-    setTasks(tasks2.filter( (task) => { console.log(tasks2)
+    n === 0? setTasks(permTasks):
+    setTasks(permTasks.filter( (task) => {
       return (((task.chore).toLowerCase()).substring(0, n) === searchString)? task: '';
     } ))
   }
