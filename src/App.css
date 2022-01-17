@@ -61,6 +61,12 @@ input{
   width: 100%;
 }
 
+.SearchTask{
+  margin-bottom: 20px;
+  border: 2px solid rgb(117, 117, 117);
+  height: 30px;
+}
+
 @media only screen and (max-width: 900px) {
   .App{
     width: 400px;

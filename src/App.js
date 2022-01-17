@@ -1,6 +1,7 @@
 import './App.css';
 import Header from './components/Header';
 import Tasks from './components/Tasks';
+import SearchBar from './components/SearchBar';
 import { useState } from 'react';
 
 const App = () => {
@@ -37,13 +38,23 @@ const App = () => {
         return task.id !== id? task: '';
     }) );
   }
+  const onSearchTask = () => {
+    setTasks(tasks.filter( (task) => {
+      return task.chore[0] === 'G'? task: '';
+    } ))
+  }
   return (
     <div className="App">
       <Header />
       {/* Blueprint bish */}
-      {tasks.length === 0? <h2>No tasks found!</h2>: <Tasks tasks={tasks} onDelete={onDeleteTask} />}
+      <SearchBar onSearch={onSearchTask} />
+      {tasks.length === 0? <h2>No tasks found!</h2>: <Tasks tasks={tasks} onDelete={onDeleteTask}  />}
     </div>
   );
 }
 
 export default App;
+/*
+1. Sort tasks
+2. Search tasks
+*/
