@@ -1,13 +1,16 @@
 /* Sh!tty styling */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .App {
   margin: auto;
+  margin-top: 40px;
   width: 40%;
   border: 4px solid black;
   padding: 30px;
@@ -17,6 +20,24 @@
   padding: 7px;
   border: 2px solid black;
   margin: auto;
+}
+
+.header{
+  background-color: black;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.btn{
+  align-self: center;
+  padding: 8px;
+}
+
+.heading{
+  color: white;
 }
 
 input{
