@@ -61,6 +61,8 @@ const App = () => {
     },
   ]);
 
+  const [showForm, setFormState] = useState(false);
+
   const onDeleteTask = (id) => {
     // console.log(id);
     setTasks(
@@ -113,10 +115,14 @@ const App = () => {
     setPermTasks([...permTasks, newTask]);
   }
 
+  const onToggleForm = () => {
+    setFormState(!showForm);
+  }
+
   return (
     <div className="App">
-      <Header />
-      <AddTask onAdd={onAddingTask} />
+      <Header onToggle={onToggleForm} showForm={showForm} />
+      {showForm === true?<AddTask onAdd={onAddingTask} />: ''}
       <SearchBar onSearch={onSearchTask} />
       {tasks.length === 0? <h2>No tasks found!</h2>: 
         <Tasks tasks={tasks} onDelete={onDeleteTask} onToggle={toggleTaskCompletion} />}
