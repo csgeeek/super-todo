@@ -1,12 +1,9 @@
 const Button = ({ onToggle, showForm }) => {
 
-		let title = "Add";
-		if(showForm === true){
-			title = "Close";
-		}
+		let title = (showForm === true)? 'Close': 'Add';
     return (
-			<button className={`${showForm === true? 'close-btn': 'add-btn'}`} onClick={() => onToggle()} > {title} </button>
-    )
+			<button className={`btn ${showForm === true? 'close': 'add'}`} onClick={() => onToggle()} > {title} </button>
+    );
 }
 
 export default Button
