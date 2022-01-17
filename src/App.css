@@ -50,6 +50,11 @@
   background-color: rgb(226, 218, 218);
   margin-bottom: 20px;
   padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.delete{
+  align-self: center;
 }
 
 input{
