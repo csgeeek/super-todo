@@ -26,18 +26,26 @@
   background-color: black;
   margin-bottom: 15px;
   padding: 10px;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   display: flex;
   justify-content: space-between;
 }
+
+.heading{
+  color: white;
+}
+
+/* Button styling */
 
 .btn{
   align-self: center;
   padding: 8px;
 }
 
-.heading{
-  color: white;
+.Task{
+  background-color: rgb(226, 218, 218);
+  margin-bottom: 20px;
+  padding: 10px;
 }
 
 input{

@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import Task from './Task';
 
 const Tasks = () => {
   const tasks = [
@@ -30,7 +31,7 @@ const Tasks = () => {
     return (
         <div>
           {tasks.map((task) => {
-            return <h2>{task.chore}</h2>
+            return <Task key={task.id} task={task} />
           })}
         </div>
     )
