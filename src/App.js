@@ -105,10 +105,18 @@ const App = () => {
     { ...task, completed: !task.completed }: task ))
   }
 
+  const onAddingTask = (taskPart) => {
+    const id = Math.floor(Math.random()*10000);
+    const newTask = {id, ...taskPart};
+
+    setTasks([...tasks, newTask]);
+    setPermTasks([...permTasks, newTask]);
+  }
+
   return (
     <div className="App">
       <Header />
-      <AddTask />
+      <AddTask onAdd={onAddingTask} />
       <SearchBar onSearch={onSearchTask} />
       {tasks.length === 0? <h2>No tasks found!</h2>: 
         <Tasks tasks={tasks} onDelete={onDeleteTask} onToggle={toggleTaskCompletion} />}
