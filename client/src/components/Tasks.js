@@ -10,7 +10,7 @@ const Tasks = ({ tasks, onDelete, onToggle }) => {
           </div>
           <div className="task-container">
             {tasks.map((task) => {
-              return <Task key={task.id} task={task} onDelete={onDelete} onToggle={onToggle} />
+              return <Task key={task.taskId} task={task} onDelete={onDelete} onToggle={onToggle} />
             })}
           </div>
         </div>
