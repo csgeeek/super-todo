@@ -1,13 +1,16 @@
 Client Side-
-
-
-
-
-
-
+    - react-icons
+    - gh-pages
+    - json-server
+    - serve 
 
 Server Side-
-
+    - Spring web
+    - h2db
+    - mysql
+    - devtools
+    - lombok
+    - spring-jpa
 
 
 
