@@ -38,7 +38,7 @@ const App = () => {
     setTasks(
       tasks.filter( 
         (task) => {
-          console.log(task);
+          // console.log(task);
           return task.taskId !== id? task: '';
         }
       ) 
@@ -56,17 +56,15 @@ const App = () => {
 
     let n = searchString.length;
     searchString = searchString.toLowerCase();
-    console.log(searchString);
-    console.log(tempTasks);
+    // console.log(searchString);
+    // console.log(tempTasks);
     await fetch(`http://localhost:8080/tasks/name/${searchString}`, {
       method: 'GET',
-    })
+    });
 
-    console.log(tasks);
-    // setTasks(tempTasks);
 
     (n === 0)? setTasks(tempTasks):
-    setTasks(
+     setTasks(
       tempTasks.filter( 
         (task) => {
           return (((task.chore).toLowerCase()).substring(0, n) === searchString)? task: '';
