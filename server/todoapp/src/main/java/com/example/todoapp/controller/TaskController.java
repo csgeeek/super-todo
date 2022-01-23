@@ -18,6 +18,7 @@ public class TaskController {
 
     @GetMapping("/")
     public String goToTasks() throws MalformedURLException {
+
         String str = "http://localhost:8080/tasks";
         URL url = new URL(str);
         System.out.println(url);
@@ -38,6 +39,7 @@ public class TaskController {
     public Task getTaskById(@PathVariable("id") Long id){
         return taskRepository.findById(id).get();
     }
+
 /*
     @GetMapping("/tasks/name/{name}")
     public Task getTaskByChore(@PathVariable("name") String chore){
