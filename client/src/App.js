@@ -25,21 +25,6 @@ const App = () => {
     return data;
   }
 
-  // useEffect( () => {
-  //   const getTempTasks = async () => {
-  //     const selectedTasksFromServer = await fetchTempTasks();
-  //     console.log(selectedTasksFromServer);
-  //     setTempTasks(selectedTasksFromServer);
-  //   }
-
-  //   getTempTasks()
-  // }, []);
-
-  // const fetchTempTasks = async () => {
-  //   const res = await fetch('http://localhost:8080/tasks/name');
-  //   const data = res.json();
-  //   return data;
-  // }
   const [tempTasks, setTempTasks] = useState([]);
 
   const [showForm, setFormState] = useState(false);
@@ -72,9 +57,9 @@ const App = () => {
     let n = searchString.length;
     searchString = searchString.toLowerCase();
     console.log(searchString);
-    // console.log(tempTasks);
+    console.log(tempTasks);
     await fetch(`http://localhost:8080/tasks/name/${searchString}`, {
-      method: 'GET'
+      method: 'GET',
     })
 
     console.log(tasks);
@@ -96,23 +81,37 @@ const App = () => {
       method: 'PUT'
     })
 
-    console.log(id);
+    // console.log(id);
     setTasks(
       tasks.map( (task) => task.taskId === id?
         { ...task, completed: !task.completed }: task 
       )
     )
-    console.log(tasks);
-    // setPermTasks(permTasks.map( (task) => task.id === id?
-    // { ...task, completed: !task.completed }: task ))
+    // console.log(tasks);
+    setTempTasks(tempTasks.map( (task) => task.taskId === id?
+    { ...task, completed: !task.completed }: task ))
   }
 
-  const onAddingTask = (taskPart) => {
-    const id = Math.floor(Math.random()*10000);
-    const newTask = {id, ...taskPart};
+  const onAddingTask = async (taskPart) => {
+
+    // console.log(taskPart);  
+    const res = await fetch(`http://localhost:8080/tasks`, {
+      method: 'POST',
+      body: JSON.stringify(
+        taskPart
+      ),
+      headers: {
+        "Content-type": "application/json"
+      }
+    })
+    const data = await res.json();
+    // console.log(data);
+
+    // const id = Math.floor(Math.random()*10000);
+    const newTask = data;
 
     setTasks([...tasks, newTask]);
-    // setPermTasks([...permTasks, newTask]);
+    setTempTasks([...tempTasks, newTask]);
   }
 
   const onToggleForm = () => {
