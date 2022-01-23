@@ -30,7 +30,7 @@ const App = () => {
   const [showForm, setFormState] = useState(false);
 
   const onDeleteTask = async (id) => {
-    // console.log(id);
+
     await fetch(`http://localhost:8080/tasks/${id}`, {
       method: 'DELETE',
     })
@@ -38,7 +38,6 @@ const App = () => {
     setTasks(
       tasks.filter( 
         (task) => {
-          // console.log(task);
           return task.taskId !== id? task: '';
         }
       ) 
@@ -56,8 +55,7 @@ const App = () => {
 
     let n = searchString.length;
     searchString = searchString.toLowerCase();
-    // console.log(searchString);
-    // console.log(tempTasks);
+
     await fetch(`http://localhost:8080/tasks/name/${searchString}`, {
       method: 'GET',
     });
@@ -79,20 +77,18 @@ const App = () => {
       method: 'PUT'
     })
 
-    // console.log(id);
     setTasks(
       tasks.map( (task) => task.taskId === id?
         { ...task, completed: !task.completed }: task 
       )
     )
-    // console.log(tasks);
+
     setTempTasks(tempTasks.map( (task) => task.taskId === id?
     { ...task, completed: !task.completed }: task ))
   }
 
   const onAddingTask = async (taskPart) => {
 
-    // console.log(taskPart);  
     const res = await fetch(`http://localhost:8080/tasks`, {
       method: 'POST',
       body: JSON.stringify(
@@ -103,9 +99,7 @@ const App = () => {
       }
     })
     const data = await res.json();
-    // console.log(data);
 
-    // const id = Math.floor(Math.random()*10000);
     const newTask = data;
 
     setTasks([...tasks, newTask]);
@@ -118,11 +112,17 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header onToggle={onToggleForm} showForm={showForm} />
-      {showForm === true?<AddTask onAdd={onAddingTask} />: ''}
-      <SearchBar onSearch={onSearchTask} />
-      {tasks.length === 0? <h2>No tasks found!</h2>: 
-        <Tasks tasks={tasks} onDelete={onDeleteTask} onToggle={toggleTaskCompletion} />}
+      <Header onToggle = {onToggleForm} showForm = {showForm} />
+
+      {showForm === true? <AddTask onAdd = {onAddingTask} />: ''}
+
+      <SearchBar onSearch = {onSearchTask} />
+
+      {
+        tasks.length === 0? <h2>No tasks found!</h2>: 
+        <Tasks tasks = {tasks} onDelete = {onDeleteTask} onToggle = {toggleTaskCompletion} />
+      }
+
     </div>
   );
 }

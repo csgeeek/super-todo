@@ -7,7 +7,6 @@ const AddTask = ( {onAdd} ) => {
   const completed = false;
 
   const onSubmit = (e) => {
-    e.preventDefault();
     if(chore === '' || time === ''){
       alert("One or more fields are empty");
       return;
