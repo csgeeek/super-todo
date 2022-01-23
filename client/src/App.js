@@ -58,13 +58,13 @@ const App = () => {
         }
       ) 
     );
-    // setPermTasks(
-    //   permTasks.filter( 
-    //     (task) => {
-    //       return task.id !== id? task: '';
-    //     }
-    //   ) 
-    // );
+    setTempTasks(
+      tempTasks.filter( 
+        (task) => {
+          return task.taskId !== id? task: '';
+        }
+      ) 
+    );
   }
 
   const onSearchTask = async (searchString) => {
@@ -77,10 +77,10 @@ const App = () => {
       method: 'GET'
     })
 
-    console.log(tempTasks);
+    console.log(tasks);
     // setTasks(tempTasks);
 
-    (n === 0)? setTasks(tasks):
+    (n === 0)? setTasks(tempTasks):
     setTasks(
       tempTasks.filter( 
         (task) => {
