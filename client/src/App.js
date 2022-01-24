@@ -20,7 +20,7 @@ const App = () => {
   }, []);
 
   const fetchTasks = async () => {
-    const res = await fetch('http://localhost:8080/tasks');
+    const res = await fetch('/tasks');
     const data = res.json();
     return data;
   }
@@ -31,7 +31,7 @@ const App = () => {
 
   const onDeleteTask = async (id) => {
 
-    await fetch(`http://localhost:8080/tasks/${id}`, {
+    await fetch(`/tasks/${id}`, {
       method: 'DELETE',
     })
 
@@ -56,7 +56,7 @@ const App = () => {
     let n = searchString.length;
     searchString = searchString.toLowerCase();
 
-    await fetch(`http://localhost:8080/tasks/name/${searchString}`, {
+    await fetch(`/tasks/name/${searchString}`, {
       method: 'GET',
     });
 
@@ -73,7 +73,7 @@ const App = () => {
 
   const toggleTaskCompletion = async (id) => {
 
-    await fetch(`http://localhost:8080/tasks/${id}`, {
+    await fetch(`/tasks/${id}`, {
       method: 'PUT'
     })
 
@@ -89,7 +89,7 @@ const App = () => {
 
   const onAddingTask = async (taskPart) => {
 
-    const res = await fetch(`http://localhost:8080/tasks`, {
+    const res = await fetch(`/tasks`, {
       method: 'POST',
       body: JSON.stringify(
         taskPart
